@@ -16,7 +16,7 @@ import { useDispatch } from "react-redux";
 import { deleteNote } from "../features/Notes/noteSlice";
 
 interface Note {
-    _id:string;
+  _id:string;
   title: string;
   priority: string;
   body: string;
