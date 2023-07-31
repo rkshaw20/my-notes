@@ -24,6 +24,12 @@ const Home: React.FC = () => {
 
   const homeNotes = useSelector((store: RootState) => store.note.home);
 
+
+  // sorted acording to pinned, from true to false;
+  // const sortedList= [...homeNotes].sort((a,b)=>b.isPinned-a.isPinned)
+  const pinnedList= homeNotes.filter((note)=>note.isPinned)
+  const unpinnedList= homeNotes.filter((note)=>!note.isPinned)
+
   return (
     <Flex flexDir="column" alignItems="center">
       <Flex>
@@ -37,11 +43,21 @@ const Home: React.FC = () => {
         </InputGroup>
         <NoteModal isOpen={isOpen} onClose={onClose} />
       </Flex>
-      <Flex flexWrap="wrap">
-        {homeNotes.map((note) => (
+      <Flex flexDir='column' gap={2} >
+      {pinnedList.length>0 && <Heading size='md' >Pinned</Heading>}  
+        <Flex flexWrap='wrap' >
+        { pinnedList.length>0  && pinnedList.map((note) => (
+          <NoteCard key={note._id} note={note} />
+        ))}
+        </Flex>
+       {pinnedList.length >0 && <Heading size='md' >Others</Heading> } 
+      <Flex flexWrap="wrap" >
+        {unpinnedList.map((note) => (
           <NoteCard key={note._id} note={note} />
         ))}
       </Flex>
+      </Flex>
+     
     </Flex>
   );
 };

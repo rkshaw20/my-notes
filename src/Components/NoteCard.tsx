@@ -15,7 +15,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import { AiFillDelete, AiFillPushpin } from "react-icons/ai";
+import { AiFillDelete, AiFillPushpin,AiOutlinePushpin } from "react-icons/ai";
 import { IoMdArchive } from "react-icons/io";
 import { MdRestore } from "react-icons/md";
 import { RiInboxUnarchiveFill } from "react-icons/ri";
@@ -61,10 +61,12 @@ const NoteCard: React.FC<NoteCardProps> = ({ note, isArchive, isTrash }) => {
       <CardHeader>
         <Flex justifyContent="space-between" alignItems="center">
           <Text fontWeight="bold">{note.title}</Text>
-          <Icon
-            as={AiFillPushpin}
-            cursor="pointer"
-            onClick={() =>
+          <IconButton
+            aria-label="pin"
+            // icon={<AiFillPushpin />}
+            icon={ note.isPinned ? <AiFillPushpin />:<AiOutlinePushpin />}
+            variant="ghost"
+            rounded="full"            onClick={() =>
               dispatch(pinNote({ ...note, isPinned: !note.isPinned }))
             }
           />
