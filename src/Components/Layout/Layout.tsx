@@ -8,9 +8,9 @@ return(
     <Grid
     bg={useColorModeValue('gray.50', 'gray.800')}
     minH="100dvh"
-    templateColumns={{ base: 'auto 1fr', lg: '1fr 3fr 1fr' }} 
+    templateColumns={{ base: 'auto 1fr', lg: '1fr 4fr' }} 
     templateRows={{
-      base: 'auto calc(100dvh - 56.8px - 82.4px) auto', 
+      base: 'auto calc(100dvh - 56.8px - 82.4px)', 
       lg: '56.8px calc(100dvh - 56.8px)',
     }}
     templateAreas={{
