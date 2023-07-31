@@ -1,40 +1,86 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 
+type State = {
+  home: any[];
+  archive: any[];
+  trash: any[];
+};
 
-type State={
-    home: any[],
-    archive: any[],
-    trash: any[],
-}
+const initialState: State = {
+  home: [],
+  archive: [],
+  trash: [],
+};
 
-const initialState: State={
-    home:[],
-    archive:[],
-    trash:[],
-}
+const noteSlice = createSlice({
+  name: "note",
+  initialState,
+  reducers: {
+    addNote: (state, action) => {
+      state.home.push(action.payload);
+    },
+    updateNote: (state, action) => {
+      const updatedNote = action.payload;
+      const updatedList = state.home.map((note) =>
+        note._id === updatedNote._id ? updatedNote : note
+      );
+      state.home = updatedList;
+    },
+    moveToArchive: (state, action) => {
+      const noteId = action.payload._id;
+      const updatedList = state.home.filter((note) => note._id !== noteId);
+      state.home = updatedList;
+      state.archive.push(action.payload);
+    },
+    unArchive: (state, action) => {
+      const noteId = action.payload._id;
+      const updatedList = state.archive.filter((note) => note._id !== noteId);
+      state.archive = updatedList;
+      state.home.push(action.payload);
+    },
+    moveToTrash: (state, action) => {
+      const noteId = action.payload._id;
+      const homeUpdatedList = state.home.filter((note) => note._id !== noteId);
+      const archiveUpdatedList = state.archive.filter(
+        (note) => note._id !== noteId
+      );
+      state.home = homeUpdatedList;
+      state.archive = archiveUpdatedList;
+      state.trash.push(action.payload);
+    },
+    restoreFromTrash: (state, action) => {
+      const noteId = action.payload._id;
+      const trashUpdatedList = state.trash.filter(
+        (note) => note._id !== noteId
+      );
+      state.trash = trashUpdatedList;
+      state.home.push(action.payload);
+    },
+    deleteFromTrash: (state, action) => {
+      const noteId = action.payload._id;
+      const trashUpdatedList = state.trash.filter(
+        (note) => note._id !== noteId
+      );
+      state.trash = trashUpdatedList;
+    },
+    pinNote: (state, action) => {
+      const updatedNote = action.payload;
+      const updatedList = state.home.map((note) =>
+        note._id === updatedNote._id ? updatedNote : note
+      );
+      state.home = updatedList;
+    },
+  },
+});
 
-const noteSlice=createSlice({
-    name:'note',
-    initialState,
-    reducers:{
-        addNote:(state,action)=>{
-    
-            state.home.push(action.payload);
-        },
-        updateNote:(state,action)=>{
-            const updatedNote=action.payload;
-            const updatedList=state.home.map((note)=>note._id===updatedNote._id ? updatedNote :note );
-            state.home=updatedList;
-        },
-        deleteNote:(state,action)=>{
-          const noteId=action.payload;
-          const updatedList=state.home.filter((note)=>note._id !==noteId);
-          state.home=updatedList;
-        },
-    }
-})
-
-
-export const {addNote,deleteNote,updateNote}=noteSlice.actions;
+export const {
+  addNote,
+  updateNote,
+  moveToArchive,
+  unArchive,
+  moveToTrash,
+  restoreFromTrash,
+  deleteFromTrash,
+  pinNote
+} = noteSlice.actions;
 export default noteSlice.reducer;
