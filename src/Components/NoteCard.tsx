@@ -10,22 +10,33 @@ import {
   MenuItem,
   MenuList,
   Text,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { deleteNote } from "../features/Notes/noteSlice";
+import NoteModal from "./NoteModal";
 
 interface Note {
-  _id:string;
+  _id: string;
   title: string;
-  priority: string;
   body: string;
+  createdAt: string;
+  priority: string;
+  isPinned: boolean;
+  timeStamp: number;
 }
 interface NoteCardProps {
   note: Note;
 }
+interface UseDisclosureReturn {
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
+}
 
 const NoteCard: React.FC<NoteCardProps> = ({ note }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure() as UseDisclosureReturn;
 
     const dispatch=useDispatch();
 
@@ -47,7 +58,8 @@ const NoteCard: React.FC<NoteCardProps> = ({ note }) => {
               rounded='full'
             />
             <MenuList minW="6rem">
-              <MenuItem>Edit</MenuItem>
+              <MenuItem onClick={onOpen} >Edit</MenuItem>
+              <NoteModal isOpen={isOpen} onClose={onClose} note={note} isEdit />
               <MenuItem onClick={()=>handleDelete()} >Delete</MenuItem>
             </MenuList>
           </Menu>

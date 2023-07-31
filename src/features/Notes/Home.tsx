@@ -23,10 +23,8 @@ const Home: React.FC = () => {
   // const { isOpen, onOpen, onClose } = disclosure;
 
   const homeNotes = useSelector((store: RootState) => store.note.home);
-  console.log({ homeNotes });
 
   return (
-    // <Heading>Home</Heading>
     <Flex flexDir="column" alignItems="center">
       <Flex>
         <InputGroup>
@@ -36,9 +34,6 @@ const Home: React.FC = () => {
             focusBorderColor="yellow.400"
             w={{ base: "300px", lg: "500px" }}
           />
-          {/* <InputRightElement>
-          <FaFileImage/>
-          </InputRightElement> */}
         </InputGroup>
         <NoteModal isOpen={isOpen} onClose={onClose} />
       </Flex>

@@ -22,14 +22,19 @@ const noteSlice=createSlice({
     
             state.home.push(action.payload);
         },
+        updateNote:(state,action)=>{
+            const updatedNote=action.payload;
+            const updatedList=state.home.map((note)=>note._id===updatedNote._id ? updatedNote :note );
+            state.home=updatedList;
+        },
         deleteNote:(state,action)=>{
           const noteId=action.payload;
           const updatedList=state.home.filter((note)=>note._id !==noteId);
           state.home=updatedList;
-        }
+        },
     }
 })
 
 
-export const {addNote,deleteNote}=noteSlice.actions;
+export const {addNote,deleteNote,updateNote}=noteSlice.actions;
 export default noteSlice.reducer;

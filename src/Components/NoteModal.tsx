@@ -20,11 +20,13 @@ import { v4 as uuid } from "uuid";
 
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addNote } from "../features/Notes/noteSlice";
+import { addNote, updateNote } from "../features/Notes/noteSlice";
 
 interface Props {
   isOpen: boolean;
   onClose: () => void;
+  isEdit?: boolean;
+  note?: InputState;
 }
 interface InputState {
   _id: string;
@@ -37,7 +39,7 @@ interface InputState {
 }
 
 
-const NoteModal: React.FC<Props> = ({ isOpen, onClose }) => {
+const NoteModal: React.FC<Props> = ({ isOpen, onClose,isEdit,note}) => {
 
   const dispatch=useDispatch();
 
@@ -55,7 +57,7 @@ const NoteModal: React.FC<Props> = ({ isOpen, onClose }) => {
     timeStamp: date.getTime(),
   }
 
-  const [input, setInput] = useState(initialState);
+  const [input, setInput] = useState(note || initialState);
 
   const handleInput = (
     e: React.ChangeEvent<
@@ -70,8 +72,11 @@ const NoteModal: React.FC<Props> = ({ isOpen, onClose }) => {
     input: InputState
   ) => {
     e.preventDefault();
-    console.log(input);
-    dispatch(addNote(input))
+    if(isEdit){
+      dispatch(updateNote(input))
+    }else{
+      dispatch(addNote(input))
+    }
     setInput(initialState);
     onClose();
   };
