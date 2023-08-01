@@ -76,7 +76,7 @@ const NoteModal: React.FC<Props> = ({ isOpen, onClose,isEdit,note}) => {
       dispatch(updateNote(input))
     }else{
       dispatch(addNote(input))
-      
+      setInput(initialState)
     }
     // handleClose()
   };

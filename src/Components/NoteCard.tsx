@@ -57,8 +57,8 @@ const NoteCard: React.FC<NoteCardProps> = ({ note, isArchive, isTrash }) => {
   const dispatch = useDispatch();
 
   return (
-    <Card w="200px" margin=".5rem">
-      <CardHeader>
+    <Card w="300px" h='fit-content' margin=".5rem">
+      <CardHeader p='.5rem 1.2rem'>
         <Flex justifyContent="space-between" alignItems="center">
           <Text fontWeight="bold">{note.title}</Text>
           <IconButton
@@ -72,8 +72,8 @@ const NoteCard: React.FC<NoteCardProps> = ({ note, isArchive, isTrash }) => {
           />
         </Flex>
       </CardHeader>
-      <CardBody>{note.body}</CardBody>
-      <CardFooter>
+      <CardBody p='.5rem 1.2rem' >{note.body}</CardBody>
+      <CardFooter p='.5rem 1.2rem'>
         <Flex justifyContent="space-between" alignItems="center" w="full">
           <Badge
             variant="outline"
@@ -87,7 +87,7 @@ const NoteCard: React.FC<NoteCardProps> = ({ note, isArchive, isTrash }) => {
           >
             {note.priority}
           </Badge>
-          <Flex placeItems="center">
+          <Flex gap={2} placeItems='center' >
             {isTrash ? (
               <Icon
                 as={MdRestore}
