@@ -12,9 +12,9 @@ const NavBar: React.FC = () => {
     <Flex
       height="full"
       flexDir={{ base: "row", lg: "column" }}
-      justify='flex-start'
+      justifyContent={{ base:'space-between', lg:'flex-start'}}
       gap={4}
-      p={{ base: "", lg: "1rem" }}
+      p={{ base: "1rem", lg: "1rem" }}
     >
         <Flex>
         <Link

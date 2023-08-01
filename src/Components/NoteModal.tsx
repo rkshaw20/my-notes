@@ -57,7 +57,7 @@ const NoteModal: React.FC<Props> = ({ isOpen, onClose,isEdit,note}) => {
     timeStamp: date.getTime(),
   }
 
-  const [input, setInput] = useState(note || initialState);
+  const [input, setInput] = useState(isEdit && note? note : initialState );
 
   const handleInput = (
     e: React.ChangeEvent<
@@ -76,10 +76,18 @@ const NoteModal: React.FC<Props> = ({ isOpen, onClose,isEdit,note}) => {
       dispatch(updateNote(input))
     }else{
       dispatch(addNote(input))
+      
     }
-    setInput(initialState);
-    onClose();
+    // handleClose()
   };
+
+  const handleClose=()=>{
+    onClose();
+    if (isEdit && note) {
+      setInput(note);
+    } else {
+      setInput(initialState);
+    }  }
 
   return (
     <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
@@ -100,7 +108,7 @@ const NoteModal: React.FC<Props> = ({ isOpen, onClose,isEdit,note}) => {
                 onChange={handleInput}
               />
             </Heading>
-            <ModalCloseButton onClick={onClose} />
+            <ModalCloseButton onClick={handleClose} />
           </Flex>
 
           <ModalBody m={0} p="0 .5rem">
@@ -139,7 +147,7 @@ const NoteModal: React.FC<Props> = ({ isOpen, onClose,isEdit,note}) => {
               </Select>
             </FormControl>
 
-            <Button type="submit" colorScheme="yellow" size="sm" mr={3}>
+            <Button type="submit" colorScheme="yellow" size="sm" mr={3} onClick={onClose} >
               Save
             </Button>
           </ModalFooter>

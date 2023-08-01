@@ -4,12 +4,14 @@ type State = {
   home: any[];
   archive: any[];
   trash: any[];
+  searchInput:string;
 };
 
 const initialState: State = {
   home: [],
   archive: [],
   trash: [],
+  searchInput:'',
 };
 
 const noteSlice = createSlice({
@@ -70,6 +72,12 @@ const noteSlice = createSlice({
       );
       state.home = updatedList;
     },
+    searchNotes:(state,action)=>{
+      const input=action.payload.toLowerCase().trim();
+     state.searchInput=input;
+
+    },
+   
   },
 });
 
@@ -81,6 +89,7 @@ export const {
   moveToTrash,
   restoreFromTrash,
   deleteFromTrash,
-  pinNote
+  pinNote,
+  searchNotes,
 } = noteSlice.actions;
 export default noteSlice.reducer;
