@@ -6,7 +6,7 @@ import NoteCard from "../../Components/NoteCard"
 const Trash: React.FC=()=>{
     const trashNotes=useSelector((store:RootState)=>store.note.trash)
     return(
-        <Flex flexDir="column" alignItems="center">
+        <Flex h='full' flexDir="column" alignItems="center">
         <Flex flexWrap="wrap">
           {trashNotes.map((note) => (
             <NoteCard key={note._id} note={note} isTrash />

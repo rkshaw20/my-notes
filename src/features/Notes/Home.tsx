@@ -38,11 +38,9 @@ console.log(searchedInput);
   const pinnedList = homeNotes.filter((note) => note.isPinned);
   const unpinnedList = homeNotes.filter((note) => !note.isPinned);
 
-  const handleClick=()=>{
-  }
 
   return (
-    <Flex flexDir="column" alignItems="center" mt={2} gap={2} >
+    <Flex h='full' flexDir="column" alignItems="center" mt={2} gap={2} >
       <Flex>
         <InputGroup>
           <Input

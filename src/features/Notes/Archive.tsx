@@ -9,7 +9,7 @@ const Archive: React.FC=()=>{
 
     const archiveNotes= useSelector((store: RootState) => store.note.archive);
     return(
-        <Flex flexDir="column" alignItems="center">
+        <Flex  h='full' flexDir="column" alignItems="center">
         <Flex flexWrap="wrap">
           {archiveNotes.map((note) => (
             <NoteCard key={note._id} note={note} isArchive />
