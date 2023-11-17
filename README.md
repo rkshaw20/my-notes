@@ -1,6 +1,6 @@
 # My-Notes
 
-Welcome to My-Notes, a social media site designed for organizing and managing your notes seamlessly. This live project is hosted on Vercel and can be accessed [here](https://twirlo.vercel.app/).
+Welcome to My-Notes, a social media site designed for organizing and managing your notes seamlessly. With a user-friendly interface and powerful features, it's the perfect solution for keeping your thoughts organized. This live project is hosted on Vercel and can be accessed [here](https://twirlo.vercel.app/).
 
 ## Technologies Used
 
@@ -22,5 +22,3 @@ To run My-Notes locally on your machine, follow these simple steps:
 3. Install dependencies: `npm install`
 4. Start the development server: `npm start`
 5. Access Twirlo in your web browser at: `http://localhost:3000`
-## Overview
- My-Notes is a social media site for maintianing your notes. With a user-friendly interface and powerful features, it's the perfect solution for keeping your thoughts organized.
