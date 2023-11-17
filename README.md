@@ -4,7 +4,7 @@ Welcome to My-Notes, a social media site designed for organizing and managing yo
 
 ## Technologies Used
 
-- **Frontend:** HTML, CSS, JS, ReactJs, TypeScript
+- **Frontend:** HTML, CSS, ReactJs, TypeScript
 - **Version Control:** Git and GitHub
 - **Hosting:** Vercel
 - **Code Editor and Tools:** VS Code, npm
