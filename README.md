@@ -17,9 +17,10 @@ To run My-Notes locally on your machine, follow these simple steps:
    ```bash
    git clone https://github.com/rkshaw20/my-notes.git
 
-2. Navigate to the project directory: `cd my-notes`
+2. **Navigate to the project directory:**
+ `cd my-notes`
 3. Install dependencies: `npm install`
 4. Start the development server: `npm start`
 5. Access Twirlo in your web browser at: `http://localhost:3000`
 ## Overview
- My-Notes is a social media site for maintianing your notes.
+ My-Notes is a social media site for maintianing your notes. With a user-friendly interface and powerful features, it's the perfect solution for keeping your thoughts organized.
